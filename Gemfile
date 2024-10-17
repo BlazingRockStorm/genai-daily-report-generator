@@ -2,5 +2,5 @@
 
 source 'https://rubygems.org'
 
-gem 'gemini-ai', '~> 4.2.0'
+gem 'gen-ai', '~> 0.4.2'
 gem 'dotenv'
