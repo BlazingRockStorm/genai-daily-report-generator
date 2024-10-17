@@ -16,4 +16,9 @@ result = client.stream_generate_content({
   contents: { role: 'user', parts: { text: '日報例文を書いてください' } }
 })
 
-p result
+mail_template = result
+              .map { |response| response.dig('candidates', 0, 'content', 'parts') }
+              .map { |parts| parts.map { |part| part['text'] }.join }
+              .join
+
+puts mail_template
