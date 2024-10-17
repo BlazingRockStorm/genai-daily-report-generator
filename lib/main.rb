@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
-require 'dotenv/load'
-require 'gemini-ai'
+require 'gen_ai'
 
 # With an API key
 client = Gemini.new(
@@ -49,3 +48,5 @@ mail_template = result
               .join
 
 puts mail_template
+model = GenAI::Language.new(:gemini, ENV['GOOGLE_GEMINI_TOKEN'])
+model.chat("日報例文を書いてください")
