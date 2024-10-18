@@ -41,7 +41,7 @@ end
 
 result = client.stream_generate_content({
   contents: { role: 'user', parts: { text: text_request } },
-  generationConfig: { temperature:0 }
+  generationConfig: { temperature: 0 }
 })
 
 mail_template = result
