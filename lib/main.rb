@@ -1,15 +1,9 @@
 # frozen_string_literal: true
 
 require 'gen_ai'
+require 'dotenv'
 
-# With an API key
-client = Gemini.new(
-  credentials: {
-    service: 'generative-language-api',
-    api_key: ENV['GOOGLE_GEMINI_TOKEN']
-  },
-  options: { model: 'gemini-pro', server_sent_events: true }
-)
+model = GenAI::Language.new(:gemini, ENV['GOOGLE_GEMINI_TOKEN'])
 
 text_request = <<-TEXT
 この日報フォーマットに情報を追加てください。
@@ -38,15 +32,4 @@ Dir.glob('./input/*.txt').each do |file_name|
   text_request += File.read(file_name)
 end
 
-result = client.stream_generate_content({
-  contents: { role: 'user', parts: { text: text_request } }
-})
-
-mail_template = result
-              .map { |response| response.dig('candidates', 0, 'content', 'parts') }
-              .map { |parts| parts.map { |part| part['text'] }.join }
-              .join
-
-puts mail_template
-model = GenAI::Language.new(:gemini, ENV['GOOGLE_GEMINI_TOKEN'])
-model.chat("日報例文を書いてください")
+model.chat(text_request)
