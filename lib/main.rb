@@ -40,7 +40,8 @@ Dir.glob('./input/*.txt').each do |file_name|
 end
 
 result = client.stream_generate_content({
-  contents: { role: 'user', parts: { text: text_request } }
+  contents: { role: 'user', parts: { text: text_request } },
+  generationConfig: { temperature:0 }
 })
 
 mail_template = result
