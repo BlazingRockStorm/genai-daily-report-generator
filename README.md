@@ -5,7 +5,7 @@
 This project utilizes the Gemini AI API to generate content based on a given prompt. The API request is made using the `gemini-ai` Ruby gem, and the response is processed to extract the generated content.
 
 ## Requirements
-- Ruby installed on your system
+- Ruby 3.1.0 or higher
 - `gemini-ai` gem installed (version ~> 4.2.0)
 - `dotenv` gem installed
 - A Google Gemini Token set as an environment variable (`GOOGLE_GEMINI_TOKEN`)
