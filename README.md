@@ -18,6 +18,7 @@ GOOGLE_GEMINI_TOKEN=your_token_here
 ```
 
 Replace `your_token_here` with your actual token.
+
 4. Put the files you want to use as input in the `/input` folder.
 5. Run the project using the run.sh script:
 
